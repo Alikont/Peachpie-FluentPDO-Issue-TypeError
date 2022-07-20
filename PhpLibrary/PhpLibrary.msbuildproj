@@ -1,0 +1,28 @@
+﻿<Project Sdk="Peachpie.NET.Sdk/1.0.21">
+  
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <ComposerAutoload>true</ComposerAutoload>
+	  <PHPProjectPath>$(MSBuildThisFileDirectory)/..</PHPProjectPath>
+	  <ComposerJsonPath>$(PHPProjectPath)/composer.json</ComposerJsonPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(PHPProjectPath)/classes/*.php" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="$(PHPProjectPath)/vendor/**/*.php" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="$(PHPProjectPath)/vendor/envms/fluentpdo/tests/**/*.php" />
+	</ItemGroup>
+	
+
+</Project>
