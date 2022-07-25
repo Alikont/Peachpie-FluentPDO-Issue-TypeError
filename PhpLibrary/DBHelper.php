@@ -21,7 +21,8 @@ class DBHelper {
 
             $query = $builder->from('manager' . ' t')
                             ->leftJoin('role' . ' r ON r.id=t.role_id')
-                            ->select('r.is_admin, r.name as role')
+                            ->leftJoin('role' . ' r2 ON r2.id=t.role_id')
+                            ->select('r.is_admin, r2.name as role')
                             ->where('t.login', $login)->where('t.archived', 0);
             $arUser = $query->fetch();
             return $arUser;
